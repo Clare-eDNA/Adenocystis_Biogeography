@@ -9,6 +9,7 @@ library(dartR)
 library(mmod)
 library(reshape2)
 library(tidyverse)
+library(hierfstat)
 
 ### Read in VCF file ###
 vcf <- read.vcfR('M3m2_miss50mac3dp3.recode.vcf')
@@ -146,24 +147,34 @@ hist(Fbar, col="firebrick", main="Average inbreeding in Adenocystis")
 
 toto <- summary(my_genind)
 names(toto)
+par(mar = c(3, 3, 3, 3))
 barplot(toto$Hexp-toto$Hobs, main="Heterozygosity: expected-observed",ylab="Hexp - Hobs")
+par(mar = c(10, 10, 10, 10))
+barplot(toto$n.by.pop,ylab="Number of samples",las=3)
+par(mar = c(3, 3, 3, 3))
+
+bartlett.test(list(toto$Hexp,toto$Hobs))
+t.test(toto$Hexp,toto$Hobs,pair=T,var.equal=TRUE,alter="greater")
+# observed heterozygosity is lower than mean expected heterozygosity
 
 
 #summary(my_genind@tab)
 X <- tab(my_genind, NA.method="mean")
 
-## make PCA
-# PCA
-sum(is.na(my_genind$tab))
-X <- scaleGen(my_genind, NA.method="mean")
-class(X)
-dim(X)
-X[1:5,1:5]
+### F statistics ###
+HFS<-pairwise.neifst(genind2hierfstat(my_genind))
+FST <- pairwise.fst(HFS, pop=NULL, res.type=c("dist", "matrix"))
+fstat(FST)
 
-pca1 <- dudi.pca(X)
-barplot(pca1$eig[1:50],main="PCA eigenvalues", col=heat.colors(50))
-pca1
-s.label(pca1$li)
-s.class(pca1$li, pop(my_genind))
-title("PCA of H. iris:\naxes 1-2")
-add.scatter.eig(pca1$eig[1:20], 3,1,2)
+dapc1 <- dapc(GBS,n.pca=3,n.da=3)
+scatter(dapc1, scree.da=TRUE)
+#Do a DAPC plot; n.pca keeps 100 levels because why not? n.da keeps 13 discriminate things
+dapc_pops <- dapc(GBS, n.da = 10, n.pca = 100)
+#Graph DAPC plot
+scatter(dapc_pops, scree.pca = TRUE, bg="white", pch=20, cstar=0, col=palette, solid=.6,cex=3, clab=0, leg=TRUE, posi.pca="bottomleft")
+
+#Reset the group for realz this time
+grp <- find.clusters(GBS, max.n.clust=3, n.pca=100, n.clust =3)
+
+#Check to see what individuals correspond to what group
+table(pop(GBS), grp$grp)
