@@ -178,3 +178,51 @@ grp <- find.clusters(GBS, max.n.clust=3, n.pca=100, n.clust =3)
 
 #Check to see what individuals correspond to what group
 table(pop(GBS), grp$grp)
+
+
+
+#MAKE GENIND OBJECT FROM VCF
+x <- vcfR2genind(vcf)
+x
+
+#POP NAMES FOR GENIND
+pop.names <- factorname
+length(pop.names)
+pop(x)= pop.names
+x
+
+#MAKE HIERFSTAT FROM GENIND
+x2 <- genind2hierfstat(x) 
+
+#SUMMARY STATISTICS OVERALL
+basicstat <- basic.stats(x2, diploid = TRUE, digits = 2) 
+names(basicstat)   
+
+allelic<-allelic.richness(x2,diploid=TRUE)
+colnames(allelic$Ar) <- popNames
+obs.het<-data.frame(basicstat$Ho)
+exp.het<-data.frame(basicstat$Hs)
+pop.freq<-data.frame(basicstat$pop.freq)
+fis<-data.frame(basicstat$Fis)
+perloc<-data.frame(basicstat$perloc)
+overall<-data.frame(basicstat$overall)
+overall
+
+
+#SUMMARY STATS PER POP (NA values removed)
+obs.het.Mean <- colMeans(obs.het, na.rm = TRUE, dims = 1)
+obs.het.Mean
+exp.het.Mean <- colMeans(exp.het, na.rm = TRUE, dims = 1)
+exp.het.Mean
+fis.Mean <- colMeans(fis, na.rm = TRUE, dims = 1)
+fis.Mean
+allelic.Mean <- colMeans(allelic$Ar, na.rm = TRUE, dims = 1)
+allelic.Mean
+
+#CONFIDENCE INTERVALS FOR FIS PER POP
+fis.CI <- boot.ppfis(x2)
+fis.CI
+
+###### LEA Plots #####
+
+library(LEA)
