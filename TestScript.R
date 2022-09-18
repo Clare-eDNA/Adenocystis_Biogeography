@@ -12,7 +12,7 @@ library(tidyverse)
 library(hierfstat)
 
 ### Read in VCF file ###
-vcf <- read.vcfR('M3m2_miss50mac3dp3.recode.vcf')
+vcf <- read.vcfR('final.recode.vcf')
 head(vcf)
 head(getFIX(vcf))
 
@@ -25,7 +25,7 @@ dp[1:4,1:6]
 
 dpf <- melt(dp, varnames=c('Index', 'Sample'), value.name = 'Depth', na.rm=TRUE)
 
-palette=rep_len(c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87"), 103)
+palette=rep_len(c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87"), 99)
 # change the end number to however many samples you have
 
 ggplot(dpf, aes(x=Sample, y=Depth)) + geom_boxplot(fill=palette) + theme_bw() +
@@ -41,7 +41,7 @@ myMiss <- apply(dp, MARGIN = 2, function(x){ sum(is.na(x)) })
 myMiss <- myMiss/nrow(vcf)
 myMiss <- data.frame((levels(dpf$Sample)), myMiss)
 colnames(myMiss) <- c('Sample', 'Missing')
-palette=rep_len(c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87"), 103)
+
 # change last number to however many samples you have
 ggplot(myMiss, aes(x=Sample, y=Missing)) + geom_col(fill=palette) + theme_bw() +
   labs(y='Missingness (%)') +theme(axis.title.x = element_blank(), axis.text.x = element_text(angle=60,hjust=1))+scale_y_continuous(expand = c(0,0))
@@ -54,7 +54,9 @@ GBS@ind.names
 # Best to create a new factorname with whatever you count out
 # Always check length!
 
-factorname <- factor(c("BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","Campbell Point","Campbell Point","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Watsons Road North","Watsons Road North","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South"))
+#factorname <- factor(c("BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","Campbell Point","Campbell Point","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Watsons Road North","Watsons Road North","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South"))
+
+factorname <- factor(c("BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","Campbell Point","Campbell Point","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Watsons Road North","Watsons Road North","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South"))
 
 length(factorname)
 
@@ -75,6 +77,22 @@ temp
 
 par(mfrow=c(1,1))
 
+## Plotting GBS SNPs vs individuals ##
+par(mar = c(5, 5, 5, 5))
+plot(GBS, col=heat.colors(3), bg="white")
+
+D<-dist(GBS)
+class(D)
+length(D)
+dfD <- as.data.frame(as.matrix(D))
+table.paint(dfD, cleg = 0, clabel.row = 0.5, clabel.col = 0.5)
+# darker = greater differences
+DFd<- t(as.matrix(D))
+DFd <- DFd[, ncol(DFd):1]
+image(DFd, col = rev(heat.colors(100)))
+
+
+
 ### Neighbor-joining tree ###
 
 par(mar = c(2, 2, 2, 2))
@@ -82,16 +100,30 @@ par(mfrow=c(1,1))
 
 # basic tree
 tree <- njs(dist(as.matrix(GBS)))
-plot(tree, "p", cex=0.5, FALSE, no.margin = TRUE, font=4, node.pos=1, edge.width=1.2)
+par(mar = c(3, 3, 0, 3))
+plot(tree, "unrooted", cex=0.45, FALSE, font=4, node.pos=1, edge.width=2, label.offset=1)
+tiplabels(pch=20, cex=1, col=c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87")[as.numeric(pop(GBS))])
+add.scale.bar()
+
+plot(tree, "phylogram", cex=0.45, FALSE, font=4, node.pos=1, edge.width=2, label.offset=1)
+tiplabels(pch=20, cex=1, col=c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87")[as.numeric(pop(GBS))])
+axisPhylo()
+add.scale.bar()
+
+
+plot(tree, "fan", cex=0.45, FALSE, font=4, node.pos=1, edge.width=2, label.offset=1)
+tiplabels(pch=20, cex=1, col=c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87")[as.numeric(pop(GBS))])
+add.scale.bar()
 
 # tree with more pizzaz 
-par(mar = c(3, 3, 3, 3))
+par(mar = c(3, 0, 3, 0))
 tre <- njs(dist(as.matrix(GBS)))
 tre$edge.length[tre$edge.length<0]<-0
-plot(tre, show.tip=TRUE) # can also use typ="cladogram" or typ="fan"
+plot(tre, show.tip=TRUE,label.offset=1,font=4,cex=0.45) # can also use typ="cladogram" or typ="fan"
 tiplabels(pch=20, cex=1, col=c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87")[as.numeric(pop(GBS))])
-title("Neighbour-joining tree of unfiltered Adneocystis data")
-add.scale.bar()
+title("Neighbour-joining tree of Adneocystis data")
+axisPhylo()
+
 
 ## PCA w Genlight
 GBS
@@ -166,15 +198,16 @@ HFS<-pairwise.neifst(genind2hierfstat(my_genind))
 FST <- pairwise.fst(HFS, pop=NULL, res.type=c("dist", "matrix"))
 fstat(FST)
 
-dapc1 <- dapc(GBS,n.pca=3,n.da=3)
-scatter(dapc1, scree.da=TRUE)
+
+dapc1 <- dapc(GBS)
+scatter(dapc1, scree.da=TRUE,posi.da ="topleft", col = palette)
 #Do a DAPC plot; n.pca keeps 100 levels because why not? n.da keeps 13 discriminate things
-dapc_pops <- dapc(GBS, n.da = 10, n.pca = 100)
+dapc_pops <- dapc(GBS, n.da = 4, n.pca = 40)
 #Graph DAPC plot
 scatter(dapc_pops, scree.pca = TRUE, bg="white", pch=20, cstar=0, col=palette, solid=.6,cex=3, clab=0, leg=TRUE, posi.pca="bottomleft")
 
 #Reset the group for realz this time
-grp <- find.clusters(GBS, max.n.clust=3, n.pca=100, n.clust =3)
+grp <- find.clusters(GBS, max.n.clust=10, n.pca=40, n.clust =10)
 
 #Check to see what individuals correspond to what group
 table(pop(GBS), grp$grp)
