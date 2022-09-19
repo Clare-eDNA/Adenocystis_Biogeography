@@ -3,15 +3,17 @@ library(mapdata)
 library(mapproj)
 library(maptools)
 
-map('nzHires', xlim=c(165,179), ylim=c(-50,-35))
-nz<-map('nzHires')
+maps::map("nzHires", xlim=c(165,179), ylim=c(-50,-35))
+nz<-maps::map('nzHires')
 
 samps <- read.csv("2022_Sampling_sites.csv", header=TRUE, stringsAsFactors=T)
 samps
 
+palette=(c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87"))
+                
 par(mar = c(1, 1, 1, 1))
-map('nzHires', xlim=c(169,170.5), ylim=c(-46.5,-45))
-points(samps$Longitude, samps$Latitude, pch=19, col="red",cex=1)
+maps::map('nzHires', xlim=c(169,170.5), ylim=c(-46.5,-45))
+points(samps$Longitude, samps$Latitude, pch=19, col=palette,cex=1)
 pointLabel(samps$Longitude, samps$Latitude, samps$Loctation)
 
 library(ggmap)
@@ -23,11 +25,11 @@ p1 <- p1 + labs(title = "New Zealand")+theme_bw()
 p1
 
 
-p2=p1+geom_point(data = samps, aes(x = Longitude, y = Latitude, colour = Loctation), size = 4,inherit.aes = FALSE, position = "jitter")+theme_bw()+coord_map(xlim=c(169.5, 170.75), ylim=c(-45.5, -46.5))
+p2=p1+geom_point(data = samps, aes(x = Longitude, y = Latitude, colour = Location), size = 4,inherit.aes = FALSE, position = "jitter", colour=palette)+theme_bw()+coord_map(xlim=c(169.5, 170.75), ylim=c(-45.5, -46.5))
 
 p2
 
-p2+ geom_text(data = samps, aes(x = Longitude, y = Latitude, label = Loctation),position = "jitter", hjust = -0.2, colour = "black", size = 3,inherit.aes = FALSE)
+p2+ geom_text(data = samps, aes(x = Longitude, y = Latitude, label = Location),position = "jitter", hjust = -0.2, colour = "black", size = 3,inherit.aes = FALSE)
 
 
 
