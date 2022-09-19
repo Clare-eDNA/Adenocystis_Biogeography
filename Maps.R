@@ -8,28 +8,35 @@ nz<-maps::map('nzHires')
 
 samps <- read.csv("2022_Sampling_sites.csv", header=TRUE, stringsAsFactors=T)
 samps
+samps$Location <- factor(samps$Location, levels = c("Lawyer's Head","Saint Clair Beach","Kuri Bush","Kuri Bush South","Taieri Beach North","Watson's Road North", "Watson's Road South","Bull Creek North","Bull Creek South","Mitchell Rocks North","Mitchell Rocks South","Kaka Point","Campbell Point"))
+levels(samps$Location)
+
 
 palette=(c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87"))
+
+## Basic map
                 
 par(mar = c(1, 1, 1, 1))
 maps::map('nzHires', xlim=c(169,170.5), ylim=c(-46.5,-45))
 points(samps$Longitude, samps$Latitude, pch=19, col=palette,cex=1)
-pointLabel(samps$Longitude, samps$Latitude, samps$Loctation)
+pointLabel(samps$Longitude, samps$Latitude, samps$Location)
 
 library(ggmap)
 
 map.nz <- map_data(map = "nz")
+
 p1 <- ggplot(map.nz, aes(x = long, y = lat, group=group))
 p1 <- p1 + geom_polygon()
 p1 <- p1 + labs(title = "New Zealand")+theme_bw()
 p1
 
 
-p2=p1+geom_point(data = samps, aes(x = Longitude, y = Latitude, colour = Location), size = 4,inherit.aes = FALSE, position = "jitter", colour=palette)+theme_bw()+coord_map(xlim=c(169.5, 170.75), ylim=c(-45.5, -46.5))
+p2=p1+geom_point(data = samps, aes_(x = samps$Longitude, y = samps$Latitude, colour = samps$Location), size = 4, inherit.aes =FALSE)+coord_map(xlim=c(169.70, 170.75), ylim=c(-45.75, -46.60))+scale_color_manual(values=palette)
 
+                
 p2
 
-p2+ geom_text(data = samps, aes(x = Longitude, y = Latitude, label = Location),position = "jitter", hjust = -0.2, colour = "black", size = 3,inherit.aes = FALSE)
+p2+ geom_text(data = samps, aes(x = Longitude, y = Latitude, label = Location,hjust=rep(-0.2),angle = 310, size=2), colour = "black", size = 3,inherit.aes = FALSE, check_overlap=TRUE)+labs(x = "Longitude", y = "Latitude")
 
 
 
@@ -47,8 +54,7 @@ samps <- read.csv("2022_Sampling_sites.csv", header=TRUE, stringsAsFactors=T)
 samps
 
 # Show first 20 rows from the `quakes` dataset
-leaflet(data = samps) %>% addTiles() %>%
-  addMarkers(~Longitude, ~Latitude, popup = ~as.character(Loctation), label = ~as.character(Loctation),labelOptions = labelOptions(noHide = T))
+leaflet(data = samps) %>% addTiles() %>%addMarkers(~Longitude, ~Latitude, popup = ~as.character(samps$Location), label = ~as.character(Location),labelOptions = labelOptions(noHide = T))
 
 
 

@@ -12,7 +12,7 @@ library(tidyverse)
 library(hierfstat)
 
 ### Read in VCF file ###
-vcf <- read.vcfR('populations.snps.vcf')
+vcf <- read.vcfR('final.recode.vcf')
 head(vcf)
 head(getFIX(vcf))
 
@@ -25,7 +25,7 @@ dp[1:4,1:6]
 
 dpf <- melt(dp, varnames=c('Index', 'Sample'), value.name = 'Depth', na.rm=TRUE)
 
-palette=rep_len(c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87"), 103)
+palette=rep_len(c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87"), 99)
 # change the end number to however many samples you have
 
 ggplot(dpf, aes(x=Sample, y=Depth)) + geom_boxplot(fill=palette) + theme_bw() +
@@ -98,6 +98,9 @@ image(DFd, col = rev(heat.colors(100)))
 par(mar = c(2, 2, 2, 2))
 par(mfrow=c(1,1))
 
+GBS@pop <- factor(GBS@pop, levels = c("Lawyer's Head","Saint Clair Beach","Kuri Bush","Kuri Bush South","Taieri Beach North","Watsons Road North", "Watsons Road South","BullCreek North","BullCreek South","Mitchell Rocks North","Mitchell Rocks South","Kaka Point","Campbell Point"))
+levels(GBS@pop)
+
 # basic tree
 tree <- njs(dist(as.matrix(GBS)))
 par(mar = c(3, 3, 0, 3))
@@ -105,11 +108,25 @@ plot(tree, "unrooted", cex=0.45, FALSE, font=4, node.pos=1, edge.width=2, label.
 tiplabels(pch=20, cex=1, col=c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87")[as.numeric(pop(GBS))])
 add.scale.bar()
 
+
 plot(tree, "phylogram", cex=0.45, FALSE, font=4, node.pos=1, edge.width=2, label.offset=1)
 tiplabels(pch=20, cex=1, col=c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87")[as.numeric(pop(GBS))])
 axisPhylo()
 add.scale.bar()
 
+# with Campbell Point 12 as an outgroup
+tree2<-root(tree, out=23)
+plot(tree2, "phylogram", cex=0.45, FALSE, font=4, node.pos=1, edge.width=2, label.offset=1)
+tiplabels(pch=20, cex=1, col=c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87")[as.numeric(pop(GBS))])
+axisPhylo()
+add.scale.bar()
+
+# with KP01 as an outgroup
+tree2<-root(tree, out=39)
+plot(tree2, "phylogram", cex=0.45, FALSE, font=4, node.pos=1, edge.width=2, label.offset=1)
+tiplabels(pch=20, cex=1, col=c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87")[as.numeric(pop(GBS))])
+axisPhylo()
+add.scale.bar()
 
 plot(tree, "fan", cex=0.45, FALSE, font=4, node.pos=1, edge.width=2, label.offset=1)
 tiplabels(pch=20, cex=1, col=c("#FF0000", "#FF6E00",  "#FFC300", "#FFFF00", "#AAD500", "#008000", "#005555", "#0000FF", "#3200AC", "#4B0082", "#812BA6", "#B857CA", "#D03A87")[as.numeric(pop(GBS))])
@@ -127,7 +144,7 @@ axisPhylo()
 
 ## PCA w Genlight
 GBS
-data_pca <- glPca(GBS, nf = 10)
+data_pca <- glPca(GBS)
 
 ##export list of eigen values and percentage variances for each PC
 
