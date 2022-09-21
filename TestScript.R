@@ -54,15 +54,18 @@ GBS@ind.names
 # Best to create a new factorname with whatever you count out
 # Always check length!
 
-factorname <- factor(c("BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","Campbell Point","Campbell Point","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Watsons Road North","Watsons Road North","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South"))
+#factorname <- factor(c("BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","Campbell Point","Campbell Point","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Watsons Road North","Watsons Road North","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South"))
 
-factorname <- factor(c("BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek North","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","BullCreek South","Campbell Point","Campbell Point","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Watsons Road North","Watsons Road North","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South","Watsons Road South"))
+factorname <- factor(c("Bull Creek North","Bull Creek North","Bull Creek North","Bull Creek North","Bull Creek North","Bull Creek North","Bull Creek North","Bull Creek North","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Bull Creek South","Campbell Point","Campbell Point","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kuri Bush South","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Kaka Point","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Lawyer's Head","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks North","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Mitchell Rocks South","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Saint Clair Beach","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Taieri Beach North","Watson's Road North","Watson's Road North","Watson's Road South","Watson's Road South","Watson's Road South","Watson's Road South","Watson's Road South","Watson's Road South","Watson's Road South","Watson's Road South"))
 
 length(factorname)
 
 GBS@pop <- factorname
 GBS@pop
 poplevels<-GBS@pop
+
+GBS@pop <- factor(GBS@pop, levels = c("Lawyer's Head","Saint Clair Beach","Kuri Bush","Kuri Bush South","Taieri Beach North","Watson's Road North", "Watson's Road South","Bull Creek North","Bull Creek South","Mitchell Rocks North","Mitchell Rocks South","Kaka Point","Campbell Point"))
+levels(GBS@pop)
 
 ### Allele frequencies ###
 
@@ -98,8 +101,6 @@ image(DFd, col = rev(heat.colors(100)))
 par(mar = c(2, 2, 2, 2))
 par(mfrow=c(1,1))
 
-GBS@pop <- factor(GBS@pop, levels = c("Lawyer's Head","Saint Clair Beach","Kuri Bush","Kuri Bush South","Taieri Beach North","Watsons Road North", "Watsons Road South","BullCreek North","BullCreek South","Mitchell Rocks North","Mitchell Rocks South","Kaka Point","Campbell Point"))
-levels(GBS@pop)
 
 # basic tree
 tree <- njs(dist(as.matrix(GBS)))
@@ -276,3 +277,102 @@ fis.CI
 ###### LEA Plots #####
 
 library(LEA)
+
+
+### Trying out structure plots ###
+
+library(vcfR)
+library(poppr)
+library(ape)
+library(RColorBrewer)
+library(vcfR)
+library(adegenet)
+library(tidyverse)
+
+pc_colors <- nPop(partial_clone) %>% 
+  RColorBrewer::brewer.pal("Set2") %>% 
+  setNames(popNames(partial_clone))
+
+pc_colors
+
+## create a distance matrix
+
+x.dist <- dist(x)
+x.dist <- poppr::bitwise.dist(x)
+
+## Basic UPGMA tree
+tree <- aboot(GBS, tree = "upgma", distance = bitwise.dist, sample = 100, cutoff = 50)
+
+cols <- brewer.pal(n = nPop(GBS), name = "paired")
+plot.phylo(tree, cex = 0.45, font = 1, adj = 0,node.pos=1, edge.width=2, tip.color =  cols)
+nodelabels(tree$node.label, adj = c(1.3, -0.5), frame = "n", cex = 0.8,font = 3, xpd = TRUE)
+
+#legend(35,10,c("CA","OR","WA"),cols, border = FALSE, bty = "n")
+legend('topleft', legend = c("CA","OR","WA"), fill = cols, border = FALSE, bty = "n", cex = 2)
+axis(side = 1)
+title(xlab = "Genetic distance (proportion of loci that are different)")
+
+
+## Minimum spanning networks
+library(igraph)
+
+rubi.dist <- bitwise.dist(GBS)
+rubi.msn <- poppr.msn(GBS, rubi.dist, showplot = FALSE, include.ties = T)
+
+node.size <- rep(2, times = nInd(GBS))
+names(node.size) <- indNames(GBS)
+vertex.attributes(rubi.msn$graph)$size <- node.size
+
+set.seed(9)
+plot_poppr_msn(GBS, rubi.msn , palette = palette, gadj = 50, inds = "none")
+
+### PCA
+
+rubi.pca <- glPca(GBS) #5 axes selsected
+barplot(100*rubi.pca$eig/sum(rubi.pca$eig), col = heat.colors(50), main="PCA Eigenvalues")
+title(ylab="Percent of variance\nexplained", line = 2)
+title(xlab="Eigenvalues", line = 1)
+
+
+rubi.pca.scores <- as.data.frame(rubi.pca$scores)
+rubi.pca.scores$pop <- pop(GBS)
+
+library(ggplot2)
+set.seed(9)
+p <- ggplot(rubi.pca.scores, aes(x=PC1, y=PC2, colour=palette)) 
+p <- p + geom_point(size=2)
+p <- p + stat_ellipse(level = 0.95, size = 1)
+p <- p + scale_color_manual(values = cols) 
+p <- p + geom_hline(yintercept = 0) 
+p <- p + geom_vline(xintercept = 0) 
+p <- p + theme_bw()
+
+p
+
+### DAPC
+test.dapc <- dapc(GBS)
+pnw.dapc <- dapc(GBS,n.pca = 20, n.da = 3) #14 and 4 seems to work ok; 20 and 3 is also interesting
+
+scatter(pnw.dapc, col = palette, cex = 2, legend = TRUE, clabel = F, posi.leg = "topright", scree.pca = TRUE, posi.pca = "bottomleft", posi.da = "topleft", cleg = 0.75)
+
+par(mar = c(5, 5,5, 5))
+compoplot(pnw.dapc,col = palette, posi = 'top', show.lab=TRUE,cleg = 0.5)
+
+dapc.results <- as.data.frame(pnw.dapc$posterior)
+dapc.results$pop <- pop(GBS)
+dapc.results$indNames <- rownames(dapc.results)
+
+# library(reshape2)
+dapc.results <- melt(dapc.results)
+library(tidyr)
+dapc.results <- pivot_longer(dapc.results, -c(pop, as.factor(indNames)))
+
+head(dapc.results, n = 6)
+colnames(dapc.results) <- c("Original_Pop","Sample","Assigned_Pop","Posterior_membership_probability")
+
+p <- ggplot(dapc.results, aes(x=Sample, y=Posterior_membership_probability, fill=Assigned_Pop))
+p <- p + geom_bar(stat='identity') 
+p <- p + scale_fill_manual(values = palette) 
+p <- p + facet_grid(~Original_Pop, scales = "free")
+p <- p + theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 8))
+p
