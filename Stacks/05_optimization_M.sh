@@ -23,6 +23,6 @@ mkdir -p M$i
 echo '#!/bin/sh' > runM$i.sh
 echo "module load Stacks/2.61-gimkl-2022a" >> runM$i.sh
 echo "cd /nesi/nobackup/uoo03666/Adenocystis/trimmed/trimmed/70bp/LargeFiles/"
-echo "denovo_map.pl --samples /nesi/nobackup/uoo03666/Adenocystis/trimmed/trimmed/70bp/LargeFiles/ --popmap BCS_pop.txt  -o M$i -p 0.8 -M $i -n $i -m 3 -T 8 -X \"populations: --write-random-snp\"" >> runM$i.sh
-sbatch -A uoo03666 -t 10:00:00 -J M$i -c 8 --mem=64G runM$i.sh # specific to mahuika and ludovic.dutoit
+echo "denovo_map.pl --samples /nesi/nobackup/uoo03666/Adenocystis/trimmed/trimmed/70bp/LargeFiles/ --popmap [pop map]  -o M$i -p 0.8 -M $i -n $i -m 3 -T 8 -X \"populations: --write-random-snp\"" >> runM$i.sh
+sbatch -A uoo03666 -t 10:00:00 -J M$i -c 8 --mem=64G runM$i.sh # specific to mahuika and user
 done
