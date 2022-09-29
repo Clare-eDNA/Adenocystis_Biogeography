@@ -1,0 +1,30 @@
+#!/bin/bash -e
+
+#SBATCH --job-name                      radtags_inline                    # the name of your job
+#SBATCH --output                        radtags1.%j.out                 # Include the job ID in the names of
+#SBATCH --error                         radtags1.%j.err                 # the output and error files
+#SBATCH --time                          20:00:00                        # 60 min, this is the MAX time your job will run, (HH:MM:SS)
+#SBATCH --mem                           64GB                            # Memory request #U need to specify for DADA2
+#SBATCH --cpus-per-task                 4
+#SBATCH --export                        NONE                            # This will stop opening Unix Gui system X11
+#SBATCH --chdir                         /nesi/project/uoo03666/Clare/Adenocystis/  # your work directory
+#SBATCH --account                       uoo03666
+
+# load your program 
+module purge
+module load Stacks/2.61-gimkl-2022a
+
+echo "loaded Stacks, starting process radtags"
+
+process_radtags -p /nesi/project/uoo03666/Clare/Adenocystis/RAW/ -o /nesi/project/uoo03666/Clare/Adenocystis/samples/ -b /nesi/project/uoo03666/Clare/Adenocystis/barcodes/barcodes_all.txt -e pstI -r -c -q -P --threads 4 -D --inline-inline --filter-illumina
+
+module load FastQC/0.11.9
+
+cd /nesi/project/uoo03666/Clare/Adenocystis/samples/
+
+mkdir removed
+
+mv *rem*gz removed/
+mv *discard* removed/
+
+fastqc *
