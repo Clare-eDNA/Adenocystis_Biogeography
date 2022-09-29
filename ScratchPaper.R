@@ -6,7 +6,7 @@ library(vcfR)
 library(adegenet)
 library(ape)
 
-vcf <- read.vcfR("populations.snps.FirstAttempt.vcf")
+vcf <- read.vcfR("final.recode.vcf")
 head(vcf)
 x <- vcfR2genlight(vcf)
 x
