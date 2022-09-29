@@ -376,3 +376,329 @@ p <- p + scale_fill_manual(values = palette)
 p <- p + facet_grid(~Original_Pop, scales = "free")
 p <- p + theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 8))
 p
+
+
+
+
+
+##### LEA Plots ####
+
+
+####
+## LEA Plots
+####
+
+###INPUT FILE AND CONVERSION
+#LEA uses the lfmm and geno formats, and provides functions to convert from other formats (ped, vcf, ancestrymap)
+library(LEA)
+##Conversion of a STACKS structure file to the lfmm and geno formats
+#Manually need to add 'ID' and 'Pop' column labels to structure file
+#Manually need to change file extension from structure.tsv to .str?
+#FORMAT 2 = two rows per individual
+help(struct2geno)
+setwd("~/Documents/Postdoc/Adenocystis_biogeography/DataAnalyses/Adenocystis_Biogeography")
+struct2geno("finalNOFIX.str", ploidy = 2, FORMAT = 2, extra.row = 1, extra.column = 2)
+
+##LEA ADMIXTURE ANALYSIS
+##Inference of individual admixture coeficients using snmf
+#main options
+#K = number of ancestral populations
+#entropy = TRUE: computes the cross-entropy criterion,
+#CPU = 4 the number of CPUs.
+project = NULL
+
+project = snmf(C:/Users/mccgr18p/Documents/STRUCTURE/onlyGRacie.STR,
+               K = 1:10,
+               entropy = TRUE,
+               repetitions = 10,
+               project = new,
+               CPU = 4)
+
+
+
+par(mfrow=c(1,1))  #ensure that cross entropy is printed alone (recommend printing to PDF 10 x 10)
+#plot cross-entropy criterion for all runs in the snmf project
+#lowest value = best supported model
+plot(project, col = blue, pch = 19, cex = 1.2)
+
+
+##Plot all assignment probability plots
+par(mfrow=c(4,1))  #plot PCs in grid
+
+#K = 2
+best = which.min(cross.entropy(project, K = 2))
+my.colors <- c(blue1, red1,
+               goldenrod1, cyan, magenta,
+               green1, deepskyblue,yellow, green4, black)
+barchart(project, K = 2, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+#K = 3
+best = which.min(cross.entropy(project, K = 3))
+my.colors <- c(blue1, red1,
+               goldenrod1, cyan, magenta,
+               green1, deepskyblue,yellow, green4, black)
+barchart(project, K = 3, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+#K = 4
+best = which.min(cross.entropy(project, K = 4))
+my.colors <- c(blue1, red1,
+               goldenrod1, cyan, magenta,
+               green1, deepskyblue,yellow, green4, black)
+barchart(project, K = 4, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+#K = 5
+best = which.min(cross.entropy(project, K = 5))
+my.colors <- c(blue1, red1,
+               goldenrod1, cyan, magenta,
+               green1, deepskyblue,yellow, green4, black)
+barchart(project, K = 5, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+#K = 6
+best = which.min(cross.entropy(project, K = 6))
+my.colors <- c(blue1, red1,
+               goldenrod1, cyan, magenta,
+               green1, deepskyblue,yellow, green4, black)
+barchart(project, K = 6, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+#K = 7
+best = which.min(cross.entropy(project, K = 7))
+my.colors <- c(blue1, red1,
+               goldenrod1, cyan, magenta,
+               green1, deepskyblue,yellow, green4, black)
+barchart(project, K = 7, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+#K = 8
+best = which.min(cross.entropy(project, K = 8))
+my.colors <- c(blue1, red1,
+               goldenrod1, cyan, magenta,
+               green1, deepskyblue,yellow, green4, black)
+barchart(project, K = 8, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+#K = 9
+best = which.min(cross.entropy(project, K = 9))
+my.colors <- c(blue1, red1,
+               goldenrod1, cyan, magenta,
+               green1, deepskyblue,yellow, green4, black)
+barchart(project, K = 9, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+#K = 10
+best = which.min(cross.entropy(project, K = 10))
+my.colors <- c(blue1, red1,
+               goldenrod1, cyan, magenta,
+               green1, deepskyblue,yellow, green4, black)
+barchart(project, K = 10, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+#Recommend printing each page of assignment plots to portrait orientation A4
+
+#############################################################
+#reload a previous project
+#project = load.snmfProject(cook-3-p6-p4-r70-Bstr.snmfProject) #example
+
+#Formatting for figures
+par(mfrow=c(4,1))  #plot PCs in grid
+#select the best run for K = 4
+best = which.min(cross.entropy(project, K = 10))
+my.colors <- c(red1, magenta, green1, green4, cyan, goldenrod1, black, grey, blue1,deepskyblue) #Example, will need to change order manually as group order changes across values of K
+barchart(project, K = 4, run = best, sort.by.Q = FALSE,
+         border = NA, space = 0,
+         col = my.colors,
+         xlab = Individuals,
+         ylab = Ancestry proportions,
+         main = Ancestry matrix) -> bp
+axis(1, at = 1:length(bp$order),
+     labels = bp$order, las=1,
+     cex.axis = .4)
+
+
+
+
+
+
+
+
+#@title vcf2structure
+#' @description converts vcfR format data to Structure or FastStructure infile
+#' @description in part based on vcfR2migrate function (vcfR package)
+#' @author Tomas Hrbek December 2020
+#'
+#' @param vcf -> vcfR object
+#' @param ind_pop -> population assignment of individuals in vcf (factor)
+#' @param keep_pop -> population(s) of interest to include in Structure infile (factor)
+#' @param inc_missing -> include missing data (logical)
+#' @param out_file -> name of file to output (Structure infile)
+#' @param method -> Structure or FastStructure format
+#' @export Structure infile of SNPs
+#' @return nothing
+#'
+#' @details
+#' This function converts the vcfR object to a Structure or FastStructure formatted input file
+#' The function will remove indels, and multiallelic loci, and optionally loci with missing data
+#'
+#' @example
+#' vcf2structure(vcf = my_vcf, ind_pop = ind_pop, keep_pop = keepers, inc_missing = TRUE, out_file = "Structure_infile.str", method = "S")
+#' vcf2structure(my_vcf, ind_pop, keepers, out_file = "Structure_infile.str")
+#' vcf2structure(my_vcf, ind_pop, keepers)
+#'
+
+vcf2structure <-function (vcf, ind_pop, keep_pop, inc_missing = TRUE, out_file = "structure.str", method = "S") 
+{
+  method <- match.arg(method, c("S", "F"), several.ok = FALSE)
+  if (class(vcf) != "vcfR") {
+    stop(paste("Expecting an object of class vcfR, received a", 
+               class(vcf), "instead"))
+  }
+  if (class(ind_pop) != "factor" | class(keep_pop) != "factor") {
+    stop(paste("Expecting population vector, received a", 
+               class(ind_pop), "and", class(keep_pop), "instead"))
+  }
+  vcf <- extract.indels(vcf, return.indels = F)
+  vcf <- vcf[is.biallelic(vcf), ]
+  if (inc_missing == FALSE) {
+    gt <- extract.gt(vcf, convertNA = T)
+    vcf <- vcf[!rowSums(is.na(gt)), ]
+  }
+  vcf_list <- lapply(keep_pop, function(x) {
+    vcf[, c(TRUE, x == ind_pop)]
+  })
+  names(vcf_list) <- keep_pop
+  pop_list <- vector(mode = "list", length = length(vcf_list))
+  names(pop_list) <- names(vcf_list)
+  
+  for (i in 1:length(vcf_list)) {
+    gt <- extract.gt(vcf_list[[i]], return.alleles = F, convertNA = T) #convertNA not working here
+    gt[is.na(gt)] <- "?/?"
+    allele1 <- apply(gt, MARGIN = 2, function(x) {
+      substr(x, 1, 1)
+    })
+    rownames(allele1) <- NULL
+    allele1 <- t(allele1)
+    allele1[allele1 == "?"] <- "-9"
+    rownames(allele1) <- paste(rownames(allele1), "_1", 
+                               sep = "")
+    allele2 <- apply(gt, MARGIN = 2, function(x) {
+      substr(x, 3, 3)
+    })
+    rownames(allele2) <- NULL
+    allele2 <- t(allele2)
+    allele2[allele2 == "?"] <- "-9"
+    rownames(allele2) <- paste(rownames(allele2), "_2", 
+                               sep = "")
+    pop_list[[i]][[1]] <- allele1
+    pop_list[[i]][[2]] <- allele2
+  }
+  
+  if (file.exists(out_file)) {
+    file.remove(out_file)
+  }
+  
+  # default output Structure, alternate output FastStructure
+  if (method == "S") {
+    for (i in 1:length(pop_list)) {
+      for (j in 1:nrow(pop_list[[i]][[1]])) {
+        utils::write.table(t(c(names(pop_list[[i]][[1]][j, 1]), i, pop_list[[i]][[1]][j, ])), file = out_file, 
+                           append = TRUE, quote = FALSE, sep = "\t", row.names = FALSE, 
+                           col.names = FALSE)
+        utils::write.table(t(c(names(pop_list[[i]][[2]][j, 1]), i, pop_list[[i]][[2]][j, ])), file = out_file, 
+                           append = TRUE, quote = FALSE, sep = "\t", row.names = FALSE, 
+                           col.names = FALSE)
+      }
+    }
+  } else if (method == "F") {
+    fill <- rep(c(0), 4)
+    for (i in 1:length(pop_list)) {
+      for (j in 1:nrow(pop_list[[i]][[1]])) {
+        utils::write.table(t(c(names(pop_list[[i]][[1]][j, 1]), i, fill, pop_list[[i]][[1]][j, ])), file = out_file, 
+                           append = TRUE, quote = FALSE, sep = "\t", row.names = FALSE, 
+                           col.names = FALSE)
+        utils::write.table(t(c(names(pop_list[[i]][[2]][j, 1]), i, fill, pop_list[[i]][[2]][j, ])), file = out_file, 
+                           append = TRUE, quote = FALSE, sep = "\t", row.names = FALSE, 
+                           col.names = FALSE)
+      }
+    }
+  }
+  
+  return(invisible(NULL))
+}
+
+
+vcf2structure <-function (vcf, ind_pop=GBS@ind.names, keep_pop=levels(GBS@pop), inc_missing = TRUE, out_file = "struc.str", method = "S")
+
+vcf2structure(vcf, ind_pop=GBS@ind.names, keep_pop=levels(GBS@pop), inc_missing = TRUE, out_file = "structure.str", method = "S")
+
+ind_pop<-GBS@ind.names
+ind_pop<-as.factor(ind_pop)
+keepers<-levels(GBS@pop)
+keepers<-as.factor(keepers)
+vcf2structure(vcf, ind_pop, keepers)
