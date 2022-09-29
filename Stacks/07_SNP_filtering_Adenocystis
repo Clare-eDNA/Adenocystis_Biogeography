@@ -1,0 +1,12 @@
+### SNP filtering Adenocystis
+module load VCFtools/0.1.15-GCC-9.2.0-Perl-5.30.1
+
+
+vcftools --vcf populations.snps.vcf --max-missing 0.5 --maf 0.05 --minDP 3 --recode --recode-INFO-all --out miss50maf5dp3
+vcftools --vcf miss50maf5dp3.recode.vcf --missing-indv
+cat out.imiss
+awk '$5 > 0.80' out.imiss | cut -f1 > lowDP-80.indv
+vcftools --vcf miss50maf5dp3.recode.vcf --remove lowDP-80.indv --recode --recode-INFO-all --out miss50maf5dp3INDV
+vcftools --vcf miss50maf5dp3INDV.recode.vcf --min-meanDP 5 --recode --recode-INFO-all --out final
+
+vcftools --vcf miss20.recode.vcf --missing-site
